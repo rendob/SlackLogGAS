@@ -1,0 +1,98 @@
+<style>
+    :root {
+        --pale-font-color: rgb(160, 160, 160);
+    }
+    body {
+        padding: 5px;
+        background-color: rgb(26, 29, 33);
+        color: white;
+    }
+
+    .msg-normal, .msg-parent, .msg-child, .broadcast-in-thread, .broadcast-in-channel, .msg-join, .msg-topic {
+        border: 1px solid gray;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    .msg-child, .broadcast-in-thread {
+        margin-left: 30px;
+        
+    }
+    .broadcast-in-thread::before {
+        content: "Also sent to the channel";
+        font-size: small;
+        color: var(--pale-font-color);
+        display: block;
+    }
+    .broadcast-in-channel::before {
+        content: "replied to a thread:";
+        font-size: small;
+        color: var(--pale-font-color);
+        display: block;
+    }
+    .msg-join, .msg-topic {
+        color: var(--pale-font-color);
+    }
+
+    .name {
+        display: inline-block;
+        font-weight: bold;
+    }
+    .date {
+        display: inline-block;
+        font-size: small;
+        color: var(--pale-font-color);
+    }
+
+    .text-bold {
+        font-weight: bold;
+    }
+    .text-italic {
+        font-style: italic;
+    }
+    .text-strikethrough {
+        text-decoration-line: line-through;
+    }
+    .text-code {
+        font-size: small;
+        padding: 1px;
+        color: rgb(210, 140, 65);
+        font-family: Consolas, Menlo, "Liberation Mono", Courier, monospace;
+        border: 1px solid rgb(58, 60, 64);
+        border-radius: 2px;
+        background-color: rgb(30, 33, 37);
+    }
+    .text-quote {
+        padding-left: 13px;
+        border-left: 3px solid rgb(210, 210, 210);
+    }
+    .text-code-block {
+        padding: 1px;
+        padding-left: 10px;
+        font-size: small;
+        color: rgb(200, 200, 200);
+        font-family: Consolas, Menlo, "Liberation Mono", Courier, monospace;
+        border: 1px solid rgb(60, 62, 66);
+        border-radius: 3px;
+        background-color: rgb(34, 37, 41);
+    }
+    a {
+        color: rgb(72, 154, 204);
+    }
+    .text-mention, .text-broadcast {
+        background-color: rgb(80, 80, 80);
+    }
+
+    li {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    .reaction {
+        padding: 3px;
+        margin-left: 2px;
+        margin-right: 2px;
+        background-color: rgb(34, 37, 41);
+        font-size: small;
+        border-radius: 10px;
+    }
+</style>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base target="_top">
+        <meta charset="UTF-8">
+        <title>SlackLog</title>
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+        <?!= HtmlService.createHtmlOutputFromFile("8_css").getContent(); ?>
+    </head>
+    <body>
+        <h1>SlackLog</h1>
+        <p>下にチャンネルIDを入れて表示ボタンを押すとそのチャンネルのメッセージが表示されます。</p>
+        <input id="ch-id" type="text" placeholder="チャンネルID">
+        <button onclick="showLog()">表示</button>
+        <div id="slackLog"></div>
+
+        <script>
+            function showLog() {
+                let textBox = document.getElementById("ch-id");
+                let chID = textBox.value;
+
+                let filePath = `htmlLog/${chID}.html`;
+                let divSlackLog = document.getElementById("slackLog");
+                divSlackLog.innerHTML = `<div class="loading">処理中...<br><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i></div>`;
+
+                google.script.run
+                .withSuccessHandler( function (htmlText) {
+                    divSlackLog.innerHTML = htmlText;
+                })
+                .withFailureHandler( function (error) {
+                    divSlackLog.innerHTML = `<p>読み込みエラーが発生しました:\n${error}</p>`;
+                })
+                .loadTxtFileContent(filePath);
+            }
+        </script>
+    </body>
+</html>
