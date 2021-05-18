@@ -26,7 +26,7 @@ Slackのアプリを作って、Scopesの**User** Token Scopesの方に以下の
 
 次に「gasCode」内のファイルをGASにコピペします。([clasp](https://github.com/google/clasp)を使える方は「code」内のファイルをclasp pushすれば大丈夫です。)
 
-「1_main.gs」の2-3行目に上でメモしておいたtokenとフォルダIDを書いて、「initialSetting」関数を実行します。これで自動でメッセージとファイルを保存してくれるようになります。
+「1_main.gs」の頭の2行に上でメモしておいたtokenとフォルダIDを書いて、「initialSetting」関数を実行します。これで自動でメッセージとファイルを保存してくれるようになります。
 
 
 ### 3. 保存したログを見られるようにする
