@@ -246,6 +246,7 @@ function filesToHtml(token: string, msg: object): string {  // filesをドライ
         let slackFiles: object[] = msg["files"];
         for (let i = 0; i < slackFiles.length; i++) {
             let slackFile: object = slackFiles[i];
+            if (slackFile["mode"] === "tombstone") continue;
             let {driveFileId, isImg} = saveFile(token, slackFile);  // ドライブ上でのid
             if (isImg) {  // 画像はそのまま表示
                 htmlText += `${indent}<img border="1" src="https://drive.google.com/uc?export=view&id=${driveFileId}" width="25%">\n`;
