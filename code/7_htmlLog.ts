@@ -247,6 +247,12 @@ function filesToHtml(token: string, msg: object): string {  // filesをドライ
         for (let i = 0; i < slackFiles.length; i++) {
             let slackFile: object = slackFiles[i];
             if (!("url_private" in slackFile)) continue;  // 削除されたり見れなくなったりするやつは諦めてskip
+            if (slackFile["url_private"].includes("google.com")) {
+                // drive上のファイルはurlをそのまま貼れば良い
+                htmlText += `${indent}<a href="${slackFile["url_private"]}">${slackFile["name"]}</a>\n`;
+                continue;
+            }
+            
             let {driveFileId, isImg} = saveFile(token, slackFile);  // ドライブ上でのid
             if (isImg) {  // 画像はそのまま表示
                 htmlText += `${indent}<img border="1" src="https://drive.google.com/uc?export=view&id=${driveFileId}" width="25%">\n`;

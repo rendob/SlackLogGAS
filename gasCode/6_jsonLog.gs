@@ -85,6 +85,7 @@ function sortFunc(msg1, msg2) {
 }
 function concatMsg(oldMsgs, newMsgs) {
     // 被りを消す
+    if (newMsgs.length === 0) return oldMsgs;
     var borderTs = Number((newMsgs[0])["ts"]); // 先頭のmsgが一番古いはず. old中のこれより古いmsgは残す
     var msgs = oldMsgs.filter(function (msg) { return (Number(msg["ts"]) < borderTs); });
     Array.prototype.push.apply(msgs, newMsgs);

@@ -90,6 +90,7 @@ function sortFunc(msg1: object, msg2: object): number {  // msg1 < msg2 なら�
 
 function concatMsg(oldMsgs: object[], newMsgs: object[]): object[] {  // oldとnewを結合. 被りの更新 + thread_ts(なければts)順でsort
     // 被りを消す
+    if (newMsgs.length === 0) return oldMsgs;
     let borderTs: number = Number((newMsgs[0])["ts"]);  // 先頭のmsgが一番古いはず. old中のこれより古いmsgは残す
     let msgs: object[] = oldMsgs.filter( (msg) => (Number(msg["ts"]) < borderTs) );
     
